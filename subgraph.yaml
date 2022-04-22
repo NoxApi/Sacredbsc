@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,43 +8,20 @@ dataSources:
     source:
       address: "0xc89323cC5d22879f55E8669ce5DACd152C97E1Fa"
       abi: Sacredbsc
+      startBlock: 18661540
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - Approval
-        - ApprovalForAll
-        - Evole
-        - Feed
-        - NewLockChoice
-        - OwnershipTransferred
-        - Reclaim
-        - RewardPaid
-        - Transfer
-        - UpdateLockChoice
+        - food
+        - foodlist
       abis:
         - name: Sacredbsc
           file: ./abis/Sacredbsc.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,indexed uint256)
-          handler: handleApproval
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
-        - event: Evole(uint256,uint256)
-          handler: handleEvole
         - event: Feed(uint256,uint256,uint256)
           handler: handleFeed
-        - event: NewLockChoice(uint256,uint256,uint256)
-          handler: handleNewLockChoice
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Reclaim(uint256,uint256,uint256)
           handler: handleReclaim
-        - event: RewardPaid(address,address,uint256)
-          handler: handleRewardPaid
-        - event: Transfer(indexed address,indexed address,indexed uint256)
-          handler: handleTransfer
-        - event: UpdateLockChoice(uint256,uint256,uint256)
-          handler: handleUpdateLockChoice
       file: ./src/mapping.ts

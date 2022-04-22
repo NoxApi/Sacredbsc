@@ -1,6 +1,10 @@
-type ExampleEntity @entity {
-  id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  approved: Bytes! # address
+type food @entity(immutable: true) {
+  id: String!
+}
+
+type foodlist @entity {
+  id: String!
+  amount: BigInt!
+  TokenID: BigInt!
+  isclaim: Boolean!
 }
